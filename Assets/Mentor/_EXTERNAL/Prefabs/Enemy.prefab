@@ -130,4 +130,3 @@ MonoBehaviour:
   _moveYSpeed: 10
   _shakeDuration: 0.5
   _shakeMagnitude: 10
-  _dampingSpeed: 15

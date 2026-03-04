@@ -15,7 +15,6 @@ namespace Mentor
         [Space(5), Header("Shake Animation Settings")]
         [SerializeField] private float _shakeDuration = 0.25f;
         [SerializeField] private float _shakeMagnitude = 5f;
-        [SerializeField] private float _dampingSpeed = 10f;
 
         private bool _isMoving = false;
 
