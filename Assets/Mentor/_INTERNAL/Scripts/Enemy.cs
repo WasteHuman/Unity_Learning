@@ -44,7 +44,7 @@ namespace Mentor
         {
             if (Vector3.Distance(transform.localPosition, _defaultPosition) > 0.05f)
             {
-                transform.localPosition = Vector3.Lerp( transform.localPosition, _defaultPosition, Time.deltaTime * _moveYSpeed);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, _defaultPosition, Time.deltaTime * _moveYSpeed);
             }
         }
 
