@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 6637648889848742625}
   - component: {fileID: 1977574004817113400}
   - component: {fileID: 6581061223615677841}
+  - component: {fileID: 2596977556459878748}
   - component: {fileID: 7382896395860731329}
+  - component: {fileID: 1716728215658585298}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -112,6 +114,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2596977556459878748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234354523509311043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397ae0d709e03864694ef3a7c0b3fe1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mentor.Enemy
+  _animations: {fileID: 0}
+  _health: {fileID: 0}
+  _damageDealer: {fileID: 0}
 --- !u!114 &7382896395860731329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,3 +147,20 @@ MonoBehaviour:
   _moveYSpeed: 10
   _shakeDuration: 0.5
   _shakeMagnitude: 10
+  _damagedColor: {r: 1, g: 0, b: 0.050980393, a: 1}
+  _defaultColor: {r: 0.27027023, g: 1, b: 0, a: 1}
+  _fadeDuration: 0.55
+--- !u!114 &1716728215658585298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234354523509311043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b441fcc9cdc74824298588cca8872cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mentor.EnemyLogic.EnemyHealth
+  _currentHealth: 0
+  _maxHealth: 100
