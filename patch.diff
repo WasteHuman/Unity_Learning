@@ -1,0 +1,529 @@
+diff --git a/Assets/Mentor/_Scenes/Mentor_Main.unity b/Assets/Mentor/_Scenes/Mentor_Main.unity
+index e46f115..89be39c 100644
+--- a/Assets/Mentor/_Scenes/Mentor_Main.unity
++++ b/Assets/Mentor/_Scenes/Mentor_Main.unity
+@@ -171,6 +171,10 @@ PrefabInstance:
+       propertyPath: m_LocalEulerAnglesHint.z
+       value: 0
+       objectReference: {fileID: 0}
++    - target: {fileID: 6581061223615677841, guid: be6c3b1ef192bca46bff58754792676e, type: 3}
++      propertyPath: m_Size.x
++      value: 1
++      objectReference: {fileID: 0}
+     m_RemovedComponents: []
+     m_RemovedGameObjects: []
+     m_AddedGameObjects: []
+@@ -356,14 +360,14 @@ Light:
+   m_PrefabAsset: {fileID: 0}
+   m_GameObject: {fileID: 726261114}
+   m_Enabled: 1
+-  serializedVersion: 11
++  serializedVersion: 12
+   m_Type: 1
+   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+   m_Intensity: 1.5
+   m_Range: 10
+   m_SpotAngle: 30
+   m_InnerSpotAngle: 21.80208
+-  m_CookieSize: 10
++  m_CookieSize2D: {x: 10, y: 10}
+   m_Shadows:
+     m_Type: 2
+     m_Resolution: -1
+@@ -624,6 +628,7 @@ MeshRenderer:
+   m_SortingLayerID: 0
+   m_SortingLayer: 0
+   m_SortingOrder: 0
++  m_MaskInteraction: 0
+   m_AdditionalVertexStreams: {fileID: 0}
+ --- !u!33 &1502930820
+ MeshFilter:
+diff --git a/Assets/Settings/Mobile_RPAsset.asset b/Assets/Settings/Mobile_RPAsset.asset
+index 7ceffe7..fedee07 100644
+--- a/Assets/Settings/Mobile_RPAsset.asset
++++ b/Assets/Settings/Mobile_RPAsset.asset
+@@ -12,8 +12,8 @@ MonoBehaviour:
+   m_Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
+   m_Name: Mobile_RPAsset
+   m_EditorClassIdentifier: 
+-  k_AssetVersion: 12
+-  k_AssetPreviousVersion: 12
++  k_AssetVersion: 13
++  k_AssetPreviousVersion: 13
+   m_RendererType: 1
+   m_RendererData: {fileID: 0}
+   m_RendererDataList:
+@@ -53,6 +53,7 @@ MonoBehaviour:
+   m_AdditionalLightsShadowResolutionTierHigh: 1024
+   m_ReflectionProbeBlending: 1
+   m_ReflectionProbeBoxProjection: 1
++  m_ReflectionProbeAtlas: 1
+   m_ShadowDistance: 50
+   m_ShadowCascadeCount: 1
+   m_Cascade2Split: 0.25
+@@ -78,11 +79,11 @@ MonoBehaviour:
+   m_UseAdaptivePerformance: 1
+   m_ColorGradingMode: 0
+   m_ColorGradingLutSize: 32
++  m_AllowPostProcessAlphaOutput: 0
+   m_UseFastSRGBLinearConversion: 1
+   m_SupportDataDrivenLensFlare: 1
+   m_SupportScreenSpaceLensFlare: 1
+   m_GPUResidentDrawerMode: 0
+-  m_UseLegacyLightmaps: 0
+   m_SmallMeshScreenPercentage: 0
+   m_GPUResidentDrawerEnableOcclusionCullingInCameras: 0
+   m_ShadowType: 1
+@@ -109,6 +110,7 @@ MonoBehaviour:
+   m_PrefilterDebugKeywords: 1
+   m_PrefilterWriteRenderingLayers: 1
+   m_PrefilterHDROutput: 1
++  m_PrefilterAlphaOutput: 0
+   m_PrefilterSSAODepthNormals: 1
+   m_PrefilterSSAOSourceDepthLow: 1
+   m_PrefilterSSAOSourceDepthMedium: 0
+@@ -126,8 +128,14 @@ MonoBehaviour:
+   m_PrefilterSoftShadowsQualityHigh: 1
+   m_PrefilterSoftShadows: 0
+   m_PrefilterScreenCoord: 1
++  m_PrefilterScreenSpaceIrradiance: 0
+   m_PrefilterNativeRenderPass: 1
+   m_PrefilterUseLegacyLightmaps: 0
++  m_PrefilterBicubicLightmapSampling: 0
++  m_PrefilterReflectionProbeRotation: 0
++  m_PrefilterReflectionProbeBlending: 0
++  m_PrefilterReflectionProbeBoxProjection: 0
++  m_PrefilterReflectionProbeAtlas: 0
+   m_ShaderVariantLogLevel: 0
+   m_ShadowCascades: 0
+   m_Textures:
+diff --git a/Assets/Settings/PC_RPAsset.asset b/Assets/Settings/PC_RPAsset.asset
+index 8b30a06..9b2b046 100644
+--- a/Assets/Settings/PC_RPAsset.asset
++++ b/Assets/Settings/PC_RPAsset.asset
+@@ -12,8 +12,8 @@ MonoBehaviour:
+   m_Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
+   m_Name: PC_RPAsset
+   m_EditorClassIdentifier: 
+-  k_AssetVersion: 12
+-  k_AssetPreviousVersion: 12
++  k_AssetVersion: 13
++  k_AssetPreviousVersion: 13
+   m_RendererType: 1
+   m_RendererData: {fileID: 0}
+   m_RendererDataList:
+@@ -53,6 +53,7 @@ MonoBehaviour:
+   m_AdditionalLightsShadowResolutionTierHigh: 1024
+   m_ReflectionProbeBlending: 1
+   m_ReflectionProbeBoxProjection: 1
++  m_ReflectionProbeAtlas: 1
+   m_ShadowDistance: 50
+   m_ShadowCascadeCount: 4
+   m_Cascade2Split: 0.25
+@@ -78,11 +79,11 @@ MonoBehaviour:
+   m_UseAdaptivePerformance: 1
+   m_ColorGradingMode: 0
+   m_ColorGradingLutSize: 32
++  m_AllowPostProcessAlphaOutput: 0
+   m_UseFastSRGBLinearConversion: 0
+   m_SupportDataDrivenLensFlare: 1
+   m_SupportScreenSpaceLensFlare: 1
+   m_GPUResidentDrawerMode: 0
+-  m_UseLegacyLightmaps: 0
+   m_SmallMeshScreenPercentage: 0
+   m_GPUResidentDrawerEnableOcclusionCullingInCameras: 0
+   m_ShadowType: 1
+@@ -109,6 +110,7 @@ MonoBehaviour:
+   m_PrefilterDebugKeywords: 1
+   m_PrefilterWriteRenderingLayers: 0
+   m_PrefilterHDROutput: 1
++  m_PrefilterAlphaOutput: 0
+   m_PrefilterSSAODepthNormals: 0
+   m_PrefilterSSAOSourceDepthLow: 1
+   m_PrefilterSSAOSourceDepthMedium: 1
+@@ -126,8 +128,14 @@ MonoBehaviour:
+   m_PrefilterSoftShadowsQualityHigh: 0
+   m_PrefilterSoftShadows: 0
+   m_PrefilterScreenCoord: 1
++  m_PrefilterScreenSpaceIrradiance: 0
+   m_PrefilterNativeRenderPass: 1
+   m_PrefilterUseLegacyLightmaps: 0
++  m_PrefilterBicubicLightmapSampling: 0
++  m_PrefilterReflectionProbeRotation: 0
++  m_PrefilterReflectionProbeBlending: 0
++  m_PrefilterReflectionProbeBoxProjection: 0
++  m_PrefilterReflectionProbeAtlas: 0
+   m_ShaderVariantLogLevel: 0
+   m_ShadowCascades: 0
+   m_Textures:
+diff --git a/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset b/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
+index e00a1f6..de9d19b 100644
+--- a/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
++++ b/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
+@@ -62,9 +62,14 @@ MonoBehaviour:
+       - rid: 6509612508357328902
+       - rid: 6509612508357328903
+       - rid: 6509612508357328904
++      - rid: 3359495212669337600
++      - rid: 3359495212669337601
++      - rid: 3359495212669337602
++      - rid: 3359495212669337603
++      - rid: 3359495212669337604
+     m_RuntimeSettings:
+       m_List: []
+-  m_AssetVersion: 8
++  m_AssetVersion: 10
+   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
+   m_RenderingLayerNames:
+   - Light Layer default
+@@ -94,6 +99,41 @@ MonoBehaviour:
+   references:
+     version: 2
+     RefIds:
++    - rid: 3359495212669337600
++      type: {class: RayTracingRenderPipelineResources, ns: UnityEngine.Rendering.UnifiedRayTracing, asm: Unity.UnifiedRayTracing.Runtime}
++      data:
++        m_Version: 1
++        m_GeometryPoolKernels: {fileID: 7200000, guid: 98e3d58cae7210c4786f67f504c9e899, type: 3}
++        m_CopyBuffer: {fileID: 7200000, guid: 1b95b5dcf48d1914c9e1e7405c7660e3, type: 3}
++        m_CopyPositions: {fileID: 7200000, guid: 1ad53a96b58d3c3488dde4f14db1aaeb, type: 3}
++        m_BitHistogram: {fileID: 7200000, guid: 8670f7ce4b60cef43bed36148aa1b0a2, type: 3}
++        m_BlockReducePart: {fileID: 7200000, guid: 4e034cc8ea2635c4e9f063e5ddc7ea7a, type: 3}
++        m_BlockScan: {fileID: 7200000, guid: 4d6d5de35fa45ef4a92119397a045cc9, type: 3}
++        m_BuildHlbvh: {fileID: 7200000, guid: 2d70cd6be91bd7843a39a54b51c15b13, type: 3}
++        m_RestructureBvh: {fileID: 7200000, guid: 56641cb88dcb31a4398a4997ef7a7a8c, type: 3}
++        m_Scatter: {fileID: 7200000, guid: a2eaeefdac4637a44b734e85b7be9186, type: 3}
++    - rid: 3359495212669337601
++      type: {class: OnTilePostProcessResource, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
++      data:
++        m_Version: 0
++        m_UberPostShader: {fileID: 4800000, guid: fe4f13c1004a07d4ea1e30bfd0326d9e, type: 3}
++    - rid: 3359495212669337602
++      type: {class: URPTerrainShaderSetting, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
++      data:
++        m_Version: 0
++        m_IncludeTerrainShaders: 1
++    - rid: 3359495212669337603
++      type: {class: UniversalRenderPipelineRuntimeTerrainShaders, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
++      data:
++        m_Version: 0
++        m_TerrainDetailLit: {fileID: 4800000, guid: f6783ab646d374f94b199774402a5144, type: 3}
++        m_TerrainDetailGrassBillboard: {fileID: 4800000, guid: 29868e73b638e48ca99a19ea58c48d90, type: 3}
++        m_TerrainDetailGrass: {fileID: 4800000, guid: e507fdfead5ca47e8b9a768b51c291a1, type: 3}
++    - rid: 3359495212669337604
++      type: {class: URPReflectionProbeSettings, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.Universal.Runtime}
++      data:
++        version: 1
++        useReflectionProbeRotation: 0
+     - rid: 6509612508357328896
+       type: {class: PostProcessData/ShaderResources, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
+       data:
+@@ -268,9 +308,9 @@ MonoBehaviour:
+         m_CoreBlitPS: {fileID: 4800000, guid: 93446b5c5339d4f00b85c159e1159b7c, type: 3}
+         m_CoreBlitColorAndDepthPS: {fileID: 4800000, guid: d104b2fc1ca6445babb8e90b0758136b, type: 3}
+         m_SamplingPS: {fileID: 4800000, guid: 04c410c9937594faa893a11dceb85f7e, type: 3}
+-        m_TerrainDetailLit: {fileID: 4800000, guid: f6783ab646d374f94b199774402a5144, type: 3}
+-        m_TerrainDetailGrassBillboard: {fileID: 4800000, guid: 29868e73b638e48ca99a19ea58c48d90, type: 3}
+-        m_TerrainDetailGrass: {fileID: 4800000, guid: e507fdfead5ca47e8b9a768b51c291a1, type: 3}
++        m_TerrainDetailLit: {fileID: 0}
++        m_TerrainDetailGrassBillboard: {fileID: 0}
++        m_TerrainDetailGrass: {fileID: 0}
+     - rid: 6852985685364965381
+       type: {class: UniversalRenderPipelineRuntimeTextures, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
+       data:
+@@ -288,11 +328,11 @@ MonoBehaviour:
+         m_SpriteUnshadowShader: {fileID: 4800000, guid: de02b375720b5c445afe83cd483bedf3, type: 3}
+         m_GeometryShadowShader: {fileID: 4800000, guid: 19349a0f9a7ed4c48a27445bcf92e5e1, type: 3}
+         m_GeometryUnshadowShader: {fileID: 4800000, guid: 77774d9009bb81447b048c907d4c6273, type: 3}
+-        m_FallOffLookup: {fileID: 2800000, guid: 5688ab254e4c0634f8d6c8e0792331ca, type: 3}
+         m_CopyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
+         m_DefaultLitMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+         m_DefaultUnlitMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+         m_DefaultMaskMaterial: {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
++        m_DefaultMesh2DLitMaterial: {fileID: 2100000, guid: 9452ae1262a74094f8a68013fbcd1834, type: 2}
+     - rid: 6852985685364965383
+       type: {class: UniversalRenderPipelineEditorMaterials, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
+       data:
+diff --git a/Packages/manifest.json b/Packages/manifest.json
+index a5c8c08..126f887 100644
+--- a/Packages/manifest.json
++++ b/Packages/manifest.json
+@@ -1,18 +1,19 @@
+ {
+   "dependencies": {
+-    "com.unity.ai.navigation": "2.0.9",
++    "com.unity.ai.navigation": "2.0.10",
+     "com.unity.collab-proxy": "2.11.4",
+-    "com.unity.ide.rider": "3.0.38",
+-    "com.unity.ide.visualstudio": "2.0.23",
+-    "com.unity.inputsystem": "1.14.2",
+-    "com.unity.multiplayer.center": "1.0.0",
++    "com.unity.ide.rider": "3.0.39",
++    "com.unity.ide.visualstudio": "2.0.26",
++    "com.unity.inputsystem": "1.18.0",
++    "com.unity.multiplayer.center": "1.0.1",
+     "com.unity.recorder": "5.1.5",
+-    "com.unity.render-pipelines.universal": "17.2.0",
++    "com.unity.render-pipelines.universal": "17.3.0",
+     "com.unity.test-framework": "1.6.0",
+-    "com.unity.timeline": "1.8.9",
++    "com.unity.timeline": "1.8.10",
+     "com.unity.ugui": "2.0.0",
+-    "com.unity.visualscripting": "1.9.7",
++    "com.unity.visualscripting": "1.9.9",
+     "com.unity.modules.accessibility": "1.0.0",
++    "com.unity.modules.adaptiveperformance": "1.0.0",
+     "com.unity.modules.ai": "1.0.0",
+     "com.unity.modules.androidjni": "1.0.0",
+     "com.unity.modules.animation": "1.0.0",
+@@ -39,6 +40,7 @@
+     "com.unity.modules.unitywebrequestaudio": "1.0.0",
+     "com.unity.modules.unitywebrequesttexture": "1.0.0",
+     "com.unity.modules.unitywebrequestwww": "1.0.0",
++    "com.unity.modules.vectorgraphics": "1.0.0",
+     "com.unity.modules.vehicles": "1.0.0",
+     "com.unity.modules.video": "1.0.0",
+     "com.unity.modules.vr": "1.0.0",
+diff --git a/Packages/packages-lock.json b/Packages/packages-lock.json
+index a715928..980bc91 100644
+--- a/Packages/packages-lock.json
++++ b/Packages/packages-lock.json
+@@ -1,7 +1,7 @@
+ {
+   "dependencies": {
+     "com.unity.ai.navigation": {
+-      "version": "2.0.9",
++      "version": "2.0.10",
+       "depth": 0,
+       "source": "registry",
+       "dependencies": {
+@@ -19,7 +19,7 @@
+       "url": "https://packages.unity.com"
+     },
+     "com.unity.burst": {
+-      "version": "1.8.25",
++      "version": "1.8.28",
+       "depth": 2,
+       "source": "registry",
+       "dependencies": {
+@@ -36,11 +36,11 @@
+       "url": "https://packages.unity.com"
+     },
+     "com.unity.collections": {
+-      "version": "2.5.7",
++      "version": "2.6.2",
+       "depth": 1,
+       "source": "registry",
+       "dependencies": {
+-        "com.unity.burst": "1.8.19",
++        "com.unity.burst": "1.8.23",
+         "com.unity.mathematics": "1.3.2",
+         "com.unity.test-framework": "1.4.6",
+         "com.unity.nuget.mono-cecil": "1.11.5",
+@@ -55,7 +55,7 @@
+       "dependencies": {}
+     },
+     "com.unity.ide.rider": {
+-      "version": "3.0.38",
++      "version": "3.0.39",
+       "depth": 0,
+       "source": "registry",
+       "dependencies": {
+@@ -64,16 +64,16 @@
+       "url": "https://packages.unity.com"
+     },
+     "com.unity.ide.visualstudio": {
+-      "version": "2.0.23",
++      "version": "2.0.26",
+       "depth": 0,
+       "source": "registry",
+       "dependencies": {
+-        "com.unity.test-framework": "1.1.9"
++        "com.unity.test-framework": "1.1.33"
+       },
+       "url": "https://packages.unity.com"
+     },
+     "com.unity.inputsystem": {
+-      "version": "1.14.2",
++      "version": "1.18.0",
+       "depth": 0,
+       "source": "registry",
+       "dependencies": {
+@@ -82,14 +82,14 @@
+       "url": "https://packages.unity.com"
+     },
+     "com.unity.mathematics": {
+-      "version": "1.3.2",
++      "version": "1.3.3",
+       "depth": 2,
+       "source": "registry",
+       "dependencies": {},
+       "url": "https://packages.unity.com"
+     },
+     "com.unity.multiplayer.center": {
+-      "version": "1.0.0",
++      "version": "1.0.1",
+       "depth": 0,
+       "source": "builtin",
+       "dependencies": {
+@@ -97,7 +97,7 @@
+       }
+     },
+     "com.unity.nuget.mono-cecil": {
+-      "version": "1.11.5",
++      "version": "1.11.6",
+       "depth": 2,
+       "source": "registry",
+       "dependencies": {},
+@@ -115,7 +115,7 @@
+       "url": "https://packages.unity.com"
+     },
+     "com.unity.render-pipelines.core": {
+-      "version": "17.2.0",
++      "version": "17.3.0",
+       "depth": 1,
+       "source": "builtin",
+       "dependencies": {
+@@ -125,17 +125,16 @@
+         "com.unity.collections": "2.4.3",
+         "com.unity.modules.physics": "1.0.0",
+         "com.unity.modules.terrain": "1.0.0",
+-        "com.unity.modules.jsonserialize": "1.0.0",
+-        "com.unity.rendering.light-transport": "1.0.1"
++        "com.unity.modules.jsonserialize": "1.0.0"
+       }
+     },
+     "com.unity.render-pipelines.universal": {
+-      "version": "17.2.0",
++      "version": "17.3.0",
+       "depth": 0,
+       "source": "builtin",
+       "dependencies": {
+-        "com.unity.render-pipelines.core": "17.2.0",
+-        "com.unity.shadergraph": "17.2.0",
++        "com.unity.render-pipelines.core": "17.3.0",
++        "com.unity.shadergraph": "17.3.0",
+         "com.unity.render-pipelines.universal-config": "17.0.3"
+       }
+     },
+@@ -147,29 +146,19 @@
+         "com.unity.render-pipelines.core": "17.0.3"
+       }
+     },
+-    "com.unity.rendering.light-transport": {
+-      "version": "1.0.1",
+-      "depth": 2,
+-      "source": "builtin",
+-      "dependencies": {
+-        "com.unity.collections": "2.2.0",
+-        "com.unity.mathematics": "1.2.4",
+-        "com.unity.modules.terrain": "1.0.0"
+-      }
+-    },
+     "com.unity.searcher": {
+-      "version": "4.9.3",
++      "version": "4.9.4",
+       "depth": 2,
+       "source": "registry",
+       "dependencies": {},
+       "url": "https://packages.unity.com"
+     },
+     "com.unity.shadergraph": {
+-      "version": "17.2.0",
++      "version": "17.3.0",
+       "depth": 1,
+       "source": "builtin",
+       "dependencies": {
+-        "com.unity.render-pipelines.core": "17.2.0",
++        "com.unity.render-pipelines.core": "17.3.0",
+         "com.unity.searcher": "4.9.3"
+       }
+     },
+@@ -194,7 +183,7 @@
+       "url": "https://packages.unity.com"
+     },
+     "com.unity.timeline": {
+-      "version": "1.8.9",
++      "version": "1.8.10",
+       "depth": 0,
+       "source": "registry",
+       "dependencies": {
+@@ -215,7 +204,7 @@
+       }
+     },
+     "com.unity.visualscripting": {
+-      "version": "1.9.7",
++      "version": "1.9.9",
+       "depth": 0,
+       "source": "registry",
+       "dependencies": {
+@@ -230,6 +219,14 @@
+       "source": "builtin",
+       "dependencies": {}
+     },
++    "com.unity.modules.adaptiveperformance": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.subsystems": "1.0.0"
++      }
++    },
+     "com.unity.modules.ai": {
+       "version": "1.0.0",
+       "depth": 0,
+@@ -437,6 +434,16 @@
+         "com.unity.modules.imageconversion": "1.0.0"
+       }
+     },
++    "com.unity.modules.vectorgraphics": {
++      "version": "1.0.0",
++      "depth": 0,
++      "source": "builtin",
++      "dependencies": {
++        "com.unity.modules.uielements": "1.0.0",
++        "com.unity.modules.imageconversion": "1.0.0",
++        "com.unity.modules.imgui": "1.0.0"
++      }
++    },
+     "com.unity.modules.vehicles": {
+       "version": "1.0.0",
+       "depth": 0,
+diff --git a/ProjectSettings/GraphicsSettings.asset b/ProjectSettings/GraphicsSettings.asset
+index aa5a1c3..84b2182 100644
+--- a/ProjectSettings/GraphicsSettings.asset
++++ b/ProjectSettings/GraphicsSettings.asset
+@@ -36,10 +36,8 @@ GraphicsSettings:
+   - {fileID: 10783, guid: 0000000000000000f000000000000000, type: 0}
+   m_PreloadedShaders: []
+   m_PreloadShadersBatchTimeLimit: -1
+-  m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
+-    type: 0}
+-  m_CustomRenderPipeline: {fileID: 11400000, guid: 4b83569d67af61e458304325a23e5dfd,
+-    type: 2}
++  m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
++  m_CustomRenderPipeline: {fileID: 11400000, guid: 4b83569d67af61e458304325a23e5dfd, type: 2}
+   m_TransparencySortMode: 0
+   m_TransparencySortAxis: {x: 0, y: 0, z: 1}
+   m_DefaultRenderingPath: 1
+@@ -60,8 +58,9 @@ GraphicsSettings:
+   m_FogKeepExp2: 1
+   m_AlbedoSwatchInfos: []
+   m_RenderPipelineGlobalSettingsMap:
+-    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 18dc0cd2c080841dea60987a38ce93fa,
+-      type: 2}
++    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 18dc0cd2c080841dea60987a38ce93fa, type: 2}
++  m_ShaderBuildSettings:
++    keywordDeclarationOverrides: []
+   m_LightsUseLinearIntensity: 1
+   m_LightsUseColorTemperature: 1
+   m_LogWhenShaderIsCompiled: 0
+diff --git a/ProjectSettings/ProjectVersion.txt b/ProjectSettings/ProjectVersion.txt
+index b3ee2d4..3d1aea2 100644
+--- a/ProjectSettings/ProjectVersion.txt
++++ b/ProjectSettings/ProjectVersion.txt
+@@ -1,2 +1,2 @@
+-m_EditorVersion: 6000.2.7f2
+-m_EditorVersionWithRevision: 6000.2.7f2 (2b518236b676)
++m_EditorVersion: 6000.3.10f1
++m_EditorVersionWithRevision: 6000.3.10f1 (e35f0c77bd8e)
