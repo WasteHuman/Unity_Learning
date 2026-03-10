@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1977574004817113400}
   - component: {fileID: 6581061223615677841}
   - component: {fileID: 7382896395860731329}
+  - component: {fileID: 6290944197784562589}
+  - component: {fileID: 3032745901539323208}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -28,13 +30,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6234354523509311043}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.49640012, y: 0.20561565, z: -0.32275194, w: 0.77919215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 65, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6637648889848742625
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -90,6 +92,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6581061223615677841
 BoxCollider:
@@ -124,9 +127,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e1743b5d2fbda4a81f991325f7799a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mentor.Enemy
-  _targetScale: {x: 0.85, y: 0.85, z: 0.85}
+  _animations: {fileID: 3032745901539323208}
+  _health: {fileID: 6290944197784562589}
+  _damageDealer: {fileID: 0}
+--- !u!114 &6290944197784562589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234354523509311043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b441fcc9cdc74824298588cca8872cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mentor.EnemyLogic.EnemyHealth
+  _currentHealth: 0
+  _maxHealth: 100
+--- !u!114 &3032745901539323208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234354523509311043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b498ab03f0f9054fb864f87d80ad842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mentor.EnemyAnimations
+  _targetScale: {x: 0, y: 0, z: 0}
   _defaultScale: {x: 1, y: 1, z: 1}
   _moveYDistance: 1
   _moveYSpeed: 10
-  _shakeDuration: 0.5
-  _shakeMagnitude: 10
+  _shakeDuration: 0.25
+  _shakeMagnitude: 5
+  _damagedColor: {r: 1, g: 0, b: 0, a: 1}
+  _defaultColor: {r: 0.48492348, g: 1, b: 0, a: 1}
+  _fadeDuration: 0.5

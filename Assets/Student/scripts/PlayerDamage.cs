@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Student.scripts
+namespace Student
 {
     public class PlayerDamage : MonoBehaviour
     {
