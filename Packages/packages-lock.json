@@ -36,11 +36,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collections": {
-<<<<<<< HEAD
       "version": "2.6.2",
-=======
-      "version": "2.5.7",
->>>>>>> origin/main
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -101,11 +97,7 @@
       }
     },
     "com.unity.nuget.mono-cecil": {
-<<<<<<< HEAD
       "version": "1.11.6",
-=======
-      "version": "1.11.5",
->>>>>>> origin/main
       "depth": 2,
       "source": "registry",
       "dependencies": {},
