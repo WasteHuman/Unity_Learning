@@ -1,15 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Mentor.EnemyLogic
 {
-    public class EnemyHealth : MonoBehaviour
+    public class EnemyHealth
     {
-        [SerializeField] private float _currentHealth = 0f;
-        [SerializeField] private float _maxHealth = 100f;
+        private float _maxHealthIncreaseMultiplier;
 
-        private void Awake()
+        private float _currentHealth = 0f;
+        private float _maxHealth;
+
+        // Событие, сейчас без него не обойтись, поэтому мы его затронем
+        public event Action EnemyDied;
+
+        public EnemyHealth(float maxHealth, float maxHealthIncreaseMultiplier)
         {
-            _currentHealth = _maxHealth;
+            _maxHealth = maxHealth;
+            _currentHealth = maxHealth;
+            _maxHealthIncreaseMultiplier = maxHealthIncreaseMultiplier;
         }
 
         public void ApplyDamage(float damage)
@@ -19,8 +27,18 @@ namespace Mentor.EnemyLogic
 
             _currentHealth -= damage;
             Debug.Log($"Enemy damaged: Current Health {_currentHealth}/Damage {damage}");
+
             if (_currentHealth <= 0f)
-                _currentHealth = _maxHealth;
+                EnemyRessurection();
+        }
+
+        private void EnemyRessurection()
+        {
+            _maxHealth *= _maxHealthIncreaseMultiplier;
+
+            _currentHealth = _maxHealth;
+            EnemyDied?.Invoke();
+            Debug.Log($"Enemy ressurected, max health: {_maxHealth}");
         }
     }
 }

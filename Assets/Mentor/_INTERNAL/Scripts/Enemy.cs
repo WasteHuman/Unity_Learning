@@ -1,24 +1,39 @@
+using Mentor.Configs;
 using Mentor.EnemyLogic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Mentor
 {
-    [RequireComponent(typeof(EnemyHealth))]
     [RequireComponent(typeof(EnemyAnimations))]
     public class Enemy : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] private EnemyAnimations _animations;
-        [SerializeField] private EnemyHealth _health;
-        [SerializeField] private DamageDealer _damageDealer;
+
+        [Space(5), Header("Configs")]
+        [SerializeField] private EnemyComponentsConfig _config;
+        [SerializeField] private PlayerConfig _playerConfig;
+
+        private EnemyHealth _health;
+        private DamageDealer _damageDealer;
 
         private void Awake()
         {
             _animations = GetComponent<EnemyAnimations>();
-            _health = GetComponent<EnemyHealth>();
+            _health = new(_config.MaxHealth, _config.MaxHealthIncreaseMultiplier);
+            _health.EnemyDied += HandleEnemyDie;
 
-            if (_damageDealer == null)
-                _damageDealer = FindFirstObjectByType<DamageDealer>();
+            _damageDealer = new(_playerConfig.InitialPlayerDamage, _playerConfig.PlayerDamageIncrease);
+        }
+
+        private void OnDestroy()
+        {
+            _health.EnemyDied -= HandleEnemyDie;
+        }
+
+        private void HandleEnemyDie()
+        {
+            _damageDealer.IncreaseDamage();
         }
 
         public void OnPointerDown(PointerEventData eventData)
