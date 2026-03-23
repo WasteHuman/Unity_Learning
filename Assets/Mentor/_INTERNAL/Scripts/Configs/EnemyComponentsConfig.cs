@@ -1,13 +1,12 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Mentor.Configs
 {
-    [CreateAssetMenu(menuName = "Configs/Enemy/Enemy Components Config", fileName = "EnemyComponentsConfig")]
+    [CreateAssetMenu(menuName = "Configs/EnemyView/EnemyView Components Config", fileName = "EnemyComponentsConfig")]
     public class EnemyComponentsConfig : ScriptableObject
     {
         [Header("Health Component Settings")]
-        [Range(0f, float.PositiveInfinity)] public float MaxHealth;
-        [Range(1f, float.PositiveInfinity)] public float MaxHealthIncreaseMultiplier;
+        [field: SerializeField, Range(0f, 100f)] public float MaxInitialHealth { get; private set; }
+        [field: SerializeField, Range(1f, 100f)] public float MaxHealthIncreaseMultiplier { get; private set;  }
     }
 }
