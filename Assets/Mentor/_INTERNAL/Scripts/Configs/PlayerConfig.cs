@@ -2,7 +2,7 @@
 
 namespace Mentor.Configs
 {
-    [CreateAssetMenu(menuName = "Configs/Player/Player Config", fileName = "PlayerConfig")]
+    [CreateAssetMenu(menuName = "Configs/PlayerLogic/PlayerLogic Config", fileName = "PlayerConfig")]
     public class PlayerConfig : ScriptableObject
     {
         [field: SerializeField, Range(1f, 100f)] public float InitialPlayerDamage { get; private set; }

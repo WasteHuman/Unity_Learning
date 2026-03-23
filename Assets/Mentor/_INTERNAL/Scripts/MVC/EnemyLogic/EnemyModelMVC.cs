@@ -4,13 +4,13 @@ using System;
 
 namespace Mentor.MVC.EnemyLogic
 {
-    public class EnemyModel : IModel
+    public class EnemyModelMVC : IModel
     {
         private readonly EnemyHealth _healthComponent;
 
         public event Action EnemyDied;
 
-        public EnemyModel(EnemyComponentsConfig config)
+        public EnemyModelMVC(EnemyComponentsConfig config)
         {
             _healthComponent = new(config.MaxInitialHealth, config.MaxHealthIncreaseMultiplier);
             _healthComponent.EnemyDied += HandleEnemyDie;

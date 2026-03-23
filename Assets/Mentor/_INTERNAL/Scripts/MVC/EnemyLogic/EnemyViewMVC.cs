@@ -7,10 +7,10 @@ using UnityEngine.EventSystems;
 namespace Mentor.MVC.EnemyLogic
 {
     [RequireComponent(typeof(EnemyAnimations))]
-    public class EnemyView : MonoBehaviour, IPointerDownHandler, IView
+    public class EnemyViewMVC : MonoBehaviour, IPointerDownHandler, IView
     {
         [SerializeField] private EnemyAnimations _animations;
-        [SerializeField] private float _animationsOffDealy = 0.1f;
+        [SerializeField] private float _animationsOffDelay = 0.1f;
 
         private Coroutine _animationRoutine;
 
@@ -33,7 +33,7 @@ namespace Mentor.MVC.EnemyLogic
 
         private IEnumerator AnimationsTurnOff()
         {
-            yield return new WaitForSeconds(_animationsOffDealy);
+            yield return new WaitForSeconds(_animationsOffDelay);
             _animations.TurnOffAnimations();
             _animationRoutine = null;
         }

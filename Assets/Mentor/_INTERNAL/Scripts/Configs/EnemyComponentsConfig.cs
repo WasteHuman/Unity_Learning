@@ -2,7 +2,7 @@
 
 namespace Mentor.Configs
 {
-    [CreateAssetMenu(menuName = "Configs/EnemyView/EnemyView Components Config", fileName = "EnemyComponentsConfig")]
+    [CreateAssetMenu(menuName = "Configs/EnemyViewMVC/EnemyViewMVC Components Config", fileName = "EnemyComponentsConfig")]
     public class EnemyComponentsConfig : ScriptableObject
     {
         [Header("Health Component Settings")]

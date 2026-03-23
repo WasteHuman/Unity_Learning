@@ -1,13 +1,12 @@
-﻿using Mentor.MVC.EnemyLogic;
-using Mentor.MVC.Common.BaseMVC;
+﻿using Mentor.MVC.Common.BaseMVC;
 using Mentor.MVC.PlayerLogic;
 
 namespace Mentor.MVC.EnemyLogic
 {
     public class EnemyController : IController
     {
-        private EnemyModel _model;
-        private EnemyView _view;
+        private EnemyModelMVC _model;
+        private EnemyViewMVC _view;
 
         private readonly PlayerModel _playerModel;
 
@@ -18,13 +17,13 @@ namespace Mentor.MVC.EnemyLogic
 
         public void BindModel(IModel model)
         {
-            _model = model as EnemyModel;
+            _model = model as EnemyModelMVC;
             _model.EnemyDied += HandleEnemyDie;
         }
 
         public void BindView(IView view)
         {
-            _view = view as EnemyView;
+            _view = view as EnemyViewMVC;
 
             _view.EnemyClicked += HandleEnemyClick;
         }
