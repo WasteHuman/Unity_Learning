@@ -1,11 +1,15 @@
 ﻿using Mentor.Configs;
+
 using Mentor.MVC.Common.BaseMVC;
 using Mentor.MVC.EnemyLogic;
 using Mentor.MVC.PlayerLogic;
+
 using Mentor.MVVM.Enemy;
 using Mentor.MVVM.PlayerLogic;
+
 using System;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace GameEntry
@@ -15,6 +19,12 @@ namespace GameEntry
         [Header("Configs")]
         [SerializeField] private PlayerConfig _playerConfig;
         [SerializeField] private EnemyComponentsConfig _enemyConfig;
+
+        [Space(5), Header("Load setup")]
+        [SerializeField] private bool _useMVVM = true;
+
+        [Space(5), Header("Game Views")]
+        [SerializeField] private PlayerInfoView _playerInfoView;
 
         private readonly List<IController> _controllers = new();
         private readonly List<IDisposable> _disposables = new();
@@ -27,8 +37,10 @@ namespace GameEntry
                 return;
             }
 
-            //CreateMVCScene();
-            CreateMVVMScene();
+            if(_useMVVM)
+                CreateMVVMScene();
+            else
+                CreateMVCScene();
         }
 
         private void OnDestroy()
@@ -48,6 +60,11 @@ namespace GameEntry
             var enemyViewMVVM = Instantiate(enemyViewMVVMPrefab);
 
             Player player = new(_playerConfig);
+            PlayerInfoViewModel playerInfoViewModel = new();
+
+            playerInfoViewModel.BindModel(player);
+            _playerInfoView.BindViewModel(playerInfoViewModel);
+
             EnemyModel enemyModel = new(_enemyConfig, player);
 
             EnemyViewModel enemyViewModel = new();

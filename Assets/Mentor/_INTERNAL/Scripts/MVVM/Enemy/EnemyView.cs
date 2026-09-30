@@ -17,6 +17,7 @@ namespace Mentor.MVVM.Enemy
         private Coroutine _animationRoutine;
 
         private void Start() => _animations = GetComponent<EnemyAnimations>();
+        private void OnDestroy() => _viewModel?.Dispose();
 
         private IEnumerator AnimationsTurnOff()
         {

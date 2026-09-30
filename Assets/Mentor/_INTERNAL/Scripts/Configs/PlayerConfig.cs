@@ -7,5 +7,6 @@ namespace Mentor.Configs
     {
         [field: SerializeField, Range(1f, 100f)] public float InitialPlayerDamage { get; private set; }
         [field: SerializeField, Range(0f, 100f)] public float PlayerDamageIncrease { get; private set;  }
+        [field: SerializeField, Range(1, 100)] public int InitialPlayerLevel { get; private set; }
     }
 }

@@ -30,6 +30,7 @@ namespace Mentor.MVVM.Enemy
             Debug.Log("[Enemy Model (MVVM)] Enemy die");
             _health.ResurrectEnemy();
             _player.IncreasePlayerDamage();
+            _player.IncreasePlayerLevel();
         }
     }
 }
