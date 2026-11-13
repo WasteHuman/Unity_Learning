@@ -5,22 +5,35 @@ namespace Enemy
 {
     public class EnemyView : MonoBehaviour
     {
+        [SerializeField] private int _maxHealth;
         [SerializeField] private int _enemyHealth;
         [SerializeField] private int _damage;
+        [SerializeField] private Button _damageButton;
+        [SerializeField] private Button _ressurectButton;
         
         private bool _isDied = false;
 
-        public Button _button;
-
         private void Start()
         {
-            _button.onClick.AddListener(HandleClick);
+            _damageButton.onClick.AddListener(HandleClick);
+            _ressurectButton.onClick.AddListener(RessurectEnemy);
             Debug.Log($"Current hp: {_enemyHealth}");
         }
 
         private void OnDestroy()
         {
-            _button.onClick.RemoveListener(HandleClick);
+            _damageButton.onClick.RemoveListener(HandleClick);
+            _ressurectButton.onClick.RemoveListener(RessurectEnemy);
+        }
+
+        private void RessurectEnemy()
+        {
+            if (!_isDied)
+                return;
+
+            _enemyHealth = _maxHealth;
+            _isDied = false;
+            Debug.Log("Enemy ressurected");
         }
 
         private void HandleClick()
@@ -34,6 +47,7 @@ namespace Enemy
             if (_enemyHealth <= 0)
             {
                 _isDied = true;
+                Debug.Log("Enemy die");
                 return;
             }
 
