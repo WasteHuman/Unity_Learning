@@ -8,6 +8,7 @@ namespace Enemy
         [SerializeField] private int _maxHealth;
         [SerializeField] private int _enemyHealth;
         [SerializeField] private int _damage;
+        
         [SerializeField] private Button _damageButton;
         [SerializeField] private Button _ressurectButton;
         
@@ -35,7 +36,8 @@ namespace Enemy
             _isDied = false;
             Debug.Log("Enemy ressurected");
         }
-
+        
+        // Заменить название на более подходящее и описывающее
         private void HandleClick()
         {
             if (_isDied)
