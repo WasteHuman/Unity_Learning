@@ -3,40 +3,43 @@ using UnityEngine.UI;
 
 namespace Enemy
 {
-    public class EnemyView : MonoBehaviour
+    public class Enemy : MonoBehaviour
     {
         [SerializeField] private int _maxHealth;
         [SerializeField] private int _enemyHealth;
         [SerializeField] private int _damage;
-        [SerializeField] private Button _damageButton;
-        [SerializeField] private Button _ressurectButton;
+
+        [Space(5), Header("Buttons")]
+        [SerializeField] private Button _hitButton;
+        [SerializeField] private Button _resurrectButton;
         
         private bool _isDied = false;
 
         private void Start()
         {
-            _damageButton.onClick.AddListener(HandleClick);
-            _ressurectButton.onClick.AddListener(RessurectEnemy);
+            _hitButton.onClick.AddListener(HandleHitButtonClick);
+            _resurrectButton.onClick.AddListener(ResurrectEnemy);
             Debug.Log($"Current hp: {_enemyHealth}");
         }
 
         private void OnDestroy()
         {
-            _damageButton.onClick.RemoveListener(HandleClick);
-            _ressurectButton.onClick.RemoveListener(RessurectEnemy);
+            _hitButton.onClick.RemoveListener(HandleHitButtonClick);
+            _resurrectButton.onClick.RemoveListener(ResurrectEnemy);
         }
 
-        private void RessurectEnemy()
+        // Метод воскрешения врага
+        private void ResurrectEnemy()
         {
             if (!_isDied)
                 return;
 
             _enemyHealth = _maxHealth;
             _isDied = false;
-            Debug.Log("Enemy ressurected");
+            Debug.Log("Enemy resurrected");
         }
 
-        private void HandleClick()
+        private void HandleHitButtonClick()
         {
             if (_isDied)
             {
